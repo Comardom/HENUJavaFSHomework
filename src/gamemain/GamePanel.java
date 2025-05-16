@@ -79,24 +79,30 @@ public class GamePanel extends JPanel implements KeyListener
 	}
 	// 以下是 KeyListener 接口需要实现的三个方法
 	@Override
-	public void keyPressed(KeyEvent e) {
-		switch (e.getKeyCode()) {
-			case KeyEvent.VK_UP -> upPressed = true;
-			case KeyEvent.VK_DOWN -> downPressed = true;
-			case KeyEvent.VK_LEFT -> leftPressed = true;
-			case KeyEvent.VK_RIGHT -> rightPressed = true;
+	public void keyPressed(KeyEvent e)
+	{
+		switch (e.getKeyCode())
+		{
+			case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_NUMPAD8, 224 -> upPressed = true;
+			case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_NUMPAD2, 225 -> downPressed = true;
+			case KeyEvent.VK_LEFT, KeyEvent.VK_A, KeyEvent.VK_NUMPAD4, 226 -> leftPressed = true;
+			case KeyEvent.VK_RIGHT, KeyEvent.VK_D, KeyEvent.VK_NUMPAD6, 227 -> rightPressed = true;
 		}
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		switch (e.getKeyCode()) {
-			case KeyEvent.VK_UP -> upPressed = false;
-			case KeyEvent.VK_DOWN -> downPressed = false;
-			case KeyEvent.VK_LEFT -> leftPressed = false;
-			case KeyEvent.VK_RIGHT -> rightPressed = false;
+	public void keyReleased(KeyEvent e)
+	{
+		switch (e.getKeyCode())
+		{
+			case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_NUMPAD8, 224 -> upPressed = false;
+			case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_NUMPAD2, 225 -> downPressed = false;
+			case KeyEvent.VK_LEFT, KeyEvent.VK_A, KeyEvent.VK_NUMPAD4, 226 -> leftPressed = false;
+			case KeyEvent.VK_RIGHT, KeyEvent.VK_D, KeyEvent.VK_NUMPAD6, 227 -> rightPressed = false;
 		}
 	}
+
+
 
 
 	@Override
@@ -106,22 +112,32 @@ public class GamePanel extends JPanel implements KeyListener
 	}
 
 	//专门处理Timer
-	void controlTimer()
-	{
-		Timer timer = new Timer(16, e -> {
-			int step = 5;
-			if (upPressed) me.setY(me.getY() - step);
-			if (downPressed) me.setY(me.getY() + step);
+	void controlTimer() {
+		long[] lastTime = {System.nanoTime()};
+		int delay = 1000 / 144; // 144 FPS（可以改成 120 或其他）
+
+		Timer timer = new Timer(delay, e -> {
+			long now = System.nanoTime();
+			double deltaSeconds = (now - lastTime[0]) / 1_000_000_000.0;
+			lastTime[0] = now;
+
+			double speed = 300; // 每秒移动 300 像素
+			double step = speed * deltaSeconds;
+
+			if (upPressed) me.setY((int)(me.getY() - step));
+			if (downPressed) me.setY((int)(me.getY() + step));
 			if (leftPressed) {
-				me.setX(me.getX() - step);
+				me.setX((int)(me.getX() - step));
 				me.setFaceLeft(true);
 			}
 			if (rightPressed) {
-				me.setX(me.getX() + step);
+				me.setX((int)(me.getX() + step));
 				me.setFaceLeft(false);
 			}
+
 			repaint();
 		});
 		timer.start();
 	}
+
 }

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="HENUJavaFSHomework:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/HENUJavaFSHomework_jar</output-path>
+    <root id="archive" name="HENUJavaFSHomework.jar">
+      <element id="module-output" name="HENUJavaFSHomework" />
+    </root>
+  </artifact>
+</component>

@@ -55,19 +55,24 @@ public class Me extends Fish
 		}
 	}
 
-	public void setX(int x) {
+	public void setX(int x)
+	{
 		this.x = x;
 	}
-	public void setY(int y) {
+	public void setY(int y)
+	{
 		this.y = y;
 	}
-	public int getX() {
+	public int getX()
+	{
 		return this.x;
 	}
-	public int getY() {
+	public int getY()
+	{
 		return this.y;
 	}
-	public void setFaceLeft(boolean faceLeft) {
+	public void setFaceLeft(boolean faceLeft)
+	{
 		this.isFaceLeft = faceLeft;
 	}
 

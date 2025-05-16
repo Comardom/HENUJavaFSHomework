@@ -1,0 +1,19 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64" height="64">
+	<title>Me</title>
+	<style>
+		.s0 { fill: #000000 } 
+	</style>
+	<path id="Background" fill-rule="evenodd" class="s0" d="m3 0v32h-3v-32z"/>
+	<path id="形状 1" fill-rule="evenodd" class="s0" d="m20 0v3h-20v-3z"/>
+	<path id="形状 2" fill-rule="evenodd" class="s0" d="m20 29v3h-20v-3z"/>
+	<path id="形状 3" fill-rule="evenodd" class="s0" d="m22 3v9h-2v-9z"/>
+	<path id="形状 4" fill-rule="evenodd" class="s0" d="m22 20v9h-2v-9z"/>
+	<path id="形状 12" fill-rule="evenodd" class="s0" d="m9 7v7h-2v-7z"/>
+	<path id="形状 5" fill-rule="evenodd" class="s0" d="m24 12v8h-2v-8z"/>
+	<path id="形状 6" fill-rule="evenodd" class="s0" d="m26 4v8h-2v-8z"/>
+	<path id="形状 7" fill-rule="evenodd" class="s0" d="m26 20v8h-2v-8z"/>
+	<path id="形状 8" fill-rule="evenodd" class="s0" d="m29 2v2h-3v-2z"/>
+	<path id="形状 9" fill-rule="evenodd" class="s0" d="m29 28v2h-3v-2z"/>
+	<path id="形状 10" fill-rule="evenodd" class="s0" d="m32 0v2h-3v-2z"/>
+	<path id="形状 11" fill-rule="evenodd" class="s0" d="m32 30v2h-3v-2z"/>
+</svg>

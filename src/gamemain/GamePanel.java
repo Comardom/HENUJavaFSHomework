@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,15 +18,36 @@ public class GamePanel extends JPanel implements KeyListener
 	private List<Fish> fishes = new ArrayList<>();
 	private final Me me;
 	private boolean upPressed, downPressed, leftPressed, rightPressed;
+	private BufferedImage backgroundCache;
 
 
 	public GamePanel()
 	{
-		setFocusable(true);        // 允许获取焦点
-		requestFocusInWindow();    // 尝试请求焦点
-		addKeyListener(this);      // 注册键盘监听器
-
 		this.me = new Me();
+
+
+		for (int i = 0; i < 10000; i++) {
+			me.setX(me.getX() + 1);
+			me.setX(me.getX() - 1);
+		}
+		for (int i = 0; i < 10000; i++) {
+			me.setY(me.getY() + 1);
+			me.setY(me.getY() - 1);
+		}
+
+//		for (int i = 0; i < 10000; i++) {
+//			me.getBounds(); // 热启动一些关键函数
+//		}
+
+		setFocusable(true);        // 允许获取焦点
+//		requestFocusInWindow();    // 尝试请求焦点
+		setDoubleBuffered(true);
+		addKeyListener(this);      // 注册键盘监听器
+		// 延迟请求焦点，确保窗口激活后才请求
+		SwingUtilities.invokeLater(this::requestFocusInWindow);
+
+//		createBackgroundCache();
+
 		me.setX(500);
 		me.setY(300);
 
@@ -40,6 +62,33 @@ public class GamePanel extends JPanel implements KeyListener
 //	{
 //		backgroundImage = ImageLoader.loadImage(path);
 //	}
+	private void createBackgroundCache()
+	{
+		if (getWidth() <= 0 || getHeight() <= 0)
+		{
+			return;
+		}
+		backgroundCache = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g2 = backgroundCache.createGraphics();
+
+		Color baseColor = new Color(180, 200, 220);
+		g2.setColor(baseColor);
+		g2.fillRect(0, 0, getWidth(), getHeight());
+
+		Color stripeColor = new Color(140, 160, 190);
+		g2.setColor(stripeColor);
+
+		int stripeWidth = 10;
+		int spacing = 20;
+
+		for (int x = 0; x < getWidth(); x += spacing)
+		{
+			g2.fillRect(x, 0, stripeWidth, getHeight());
+		}
+
+		g2.dispose();
+	}
+
 
 	//下面这个函数会自己调用，不需要手动使用
 	@Override
@@ -66,10 +115,24 @@ public class GamePanel extends JPanel implements KeyListener
 		int stripeWidth = 10;  // 条纹宽度
 		int spacing = 20;      // 条纹间隔（从一条开始到下一条开始的距离）
 
+
+
 		for (int x = 0; x < getWidth(); x += spacing)
 		{
 			g.fillRect(x, 0, stripeWidth, getHeight());
 		}
+
+		if (backgroundCache == null || backgroundCache.getWidth() != getWidth() || backgroundCache.getHeight() != getHeight())
+		{
+			createBackgroundCache();
+		}
+
+		g.drawImage(backgroundCache, 0, 0, null);
+
+		// 简单填充白色背景
+//		g.setColor(Color.WHITE);
+//		g.fillRect(0, 0, getWidth(), getHeight());
+
 
 		// 绘制所有鱼
 		for (Fish f : fishes)
@@ -112,7 +175,7 @@ public class GamePanel extends JPanel implements KeyListener
 	}
 
 	//专门处理Timer
-	void controlTimer() {
+	void controlTimer1() {
 		long[] lastTime = {System.nanoTime()};
 		int delay = 1000 / 144; // 144 FPS（可以改成 120 或其他）
 
@@ -135,6 +198,74 @@ public class GamePanel extends JPanel implements KeyListener
 				me.setFaceLeft(false);
 			}
 
+			repaint();
+		});
+		timer.start();
+	}
+	void controlTimer2()
+	{
+		Thread gameThread = new Thread(() -> {
+			int fps = 240;
+			long frameDuration = 1000 / fps;
+
+			while (true)
+			{
+				long startTime = System.currentTimeMillis();
+
+				// 更新逻辑（移动角色）
+				int speed = 4;
+				if (upPressed) me.setY(me.getY() - speed);
+				if (downPressed) me.setY(me.getY() + speed);
+				if (leftPressed) {
+					me.setX(me.getX() - speed);
+					me.setFaceLeft(true);
+				}
+				if (rightPressed) {
+					me.setX(me.getX() + speed);
+					me.setFaceLeft(false);
+				}
+
+				// 重绘必须在 EDT 线程中调用
+				SwingUtilities.invokeLater(this::repaint);
+
+				long elapsed = System.currentTimeMillis() - startTime;
+				long sleepTime = frameDuration - elapsed;
+
+				if (sleepTime > 0)
+				{
+					try
+					{
+						Thread.sleep(sleepTime);
+					}
+					catch (InterruptedException e)
+					{
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+
+		gameThread.setDaemon(true);
+		gameThread.start();
+	}
+
+	private Timer timer;
+	private void controlTimer() {
+		int fps = 60;
+		int delay = 1000 / fps;
+
+		timer = new Timer(delay, e -> {
+			int speed = 4;
+			if (upPressed) me.setY(me.getY() - speed);
+			if (downPressed) me.setY(me.getY() + speed);
+			if (leftPressed) {
+				me.setX(me.getX() - speed);
+				me.setFaceLeft(true);
+			}
+			if (rightPressed) {
+				me.setX(me.getX() + speed);
+				me.setFaceLeft(false);
+			}
 			repaint();
 		});
 		timer.start();

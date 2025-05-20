@@ -8,13 +8,13 @@ import java.awt.image.BufferedImage;
 public class Me extends Fish
 {
 	private static final int ME_SIDE_LENGTH = 64;
-	private final BufferedImage fishImage;
+	private static final BufferedImage fishImage = ImageLoader.loadImage("/img/Me.png");
 
 
 	public Me()
 	{
 		super(500,300, ME_SIDE_LENGTH,ME_SIDE_LENGTH, true,false);
-		fishImage = ImageLoader.loadImage("/img/Me.png");
+//		fishImage = ImageLoader.loadImage("/img/Me.png");
 		this.speed=0;
 		if (fishImage == null) {
 			System.err.println("Failed to load Me.png");
@@ -32,12 +32,14 @@ public class Me extends Fish
 	public void draw(Graphics g)
 	{
 		Graphics2D g2 = (Graphics2D) g;
+
+		// 测试用纯色矩形，排除图片问题
+//		g2.setColor(Color.BLUE);
+//		g2.fillRect(x, y, width, height);
+
+
 		if (fishImage != null)
 		{
-
-//			g2.setColor(Color.BLUE);
-//			g2.fillRect(x, y, width, height);
-
 			if (isFaceLeft)
 			{
 				g2.drawImage(fishImage, x, y, width, height, null);

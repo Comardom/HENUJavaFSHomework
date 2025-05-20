@@ -12,14 +12,23 @@ public class Main
 	}
 	static void createWindow()
 	{
-		//用来创建窗体
+		// 创建主游戏窗口
 		SwingUtilities.invokeLater(() -> {
 			JFrame frame = new JFrame("Game");
-			Image icon = Toolkit.getDefaultToolkit().getImage("/img/Me.png");
+
+			// 设置窗口图标（从资源中加载）
+			Image icon = Toolkit.getDefaultToolkit().getImage(
+					Main.class.getResource("/img/Me.png")
+			);
 			frame.setIconImage(icon);
+
 			frame.setSize(800, 600);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+			// 添加游戏面板
 			frame.add(new GamePanel());
+
+			frame.setLocationRelativeTo(null); // 居中显示
 			frame.setVisible(true);
 		});
 	}

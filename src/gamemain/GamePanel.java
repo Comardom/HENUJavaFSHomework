@@ -2,35 +2,57 @@ package gamemain;
 
 import entity.Fish;
 import entity.Me;
+import entity.SmallFish;
 
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class GamePanel extends JPanel implements KeyListener
 {
 //	private BufferedImage backgroundImage;
 	private List<Fish> fishes = new ArrayList<>();
-	private final Me me;
+	private Me me;
+	private SmallFish  smallFish;
 	private boolean upPressed, downPressed, leftPressed, rightPressed;
 	private BufferedImage backgroundCache;
 
 
 	public GamePanel()
 	{
-		this.me = new Me();
+		me = new Me(800, 800); // 先写死
 
+//		this.me = new Me();
+//		this.me = new Me(this.getWidth(), this.getHeight());
+//		setPreferredSize(new Dimension(800, 800));
+//		addComponentListener(new ComponentAdapter()
+//		{
+//			@Override
+//			public void componentResized(ComponentEvent e)
+//			{
+//				// 创建 Me 的正确时机
+//				if (me == null)
+//				{
+//					me = new Me(getWidth(), getHeight());
+//				}
+//			}
+//		});
 
-		for (int i = 0; i < 10000; i++) {
+		for (int i = 0; i < 10000; i++)
+		{
 			me.setX(me.getX() + 1);
 			me.setX(me.getX() - 1);
 		}
-		for (int i = 0; i < 10000; i++) {
+		for (int i = 0; i < 10000; i++)
+		{
 			me.setY(me.getY() + 1);
 			me.setY(me.getY() - 1);
 		}
@@ -139,6 +161,7 @@ public class GamePanel extends JPanel implements KeyListener
 		{
 			f.draw(g);
 		}
+		Toolkit.getDefaultToolkit().sync();
 	}
 	// 以下是 KeyListener 接口需要实现的三个方法
 	@Override
@@ -173,7 +196,7 @@ public class GamePanel extends JPanel implements KeyListener
 	{
 		// 不用处理
 	}
-
+//以下这俩废弃*****************************
 	//专门处理Timer
 	void controlTimer1() {
 		long[] lastTime = {System.nanoTime()};
@@ -248,26 +271,42 @@ public class GamePanel extends JPanel implements KeyListener
 		gameThread.setDaemon(true);
 		gameThread.start();
 	}
-
-	private Timer timer;
-	private void controlTimer() {
+//以上这俩废弃*****************************
+    private void controlTimer() {
 		int fps = 60;
 		int delay = 1000 / fps;
 
-		timer = new Timer(delay, e -> {
-			int speed = 4;
-			if (upPressed) me.setY(me.getY() - speed);
-			if (downPressed) me.setY(me.getY() + speed);
-			if (leftPressed) {
-				me.setX(me.getX() - speed);
-				me.setFaceLeft(true);
+		// 每几帧生成一条新的鱼
+		AtomicInteger spawnCounter = new AtomicInteger();
+
+        Timer timer = new Timer(delay, e -> {
+            int speed = 4;
+            if (upPressed) me.setY(me.getY() - speed);
+            if (downPressed) me.setY(me.getY() + speed);
+            if (leftPressed) {
+                me.setX(me.getX() - speed);
+                me.setFaceLeft(true);
+            }
+            if (rightPressed) {
+                me.setX(me.getX() + speed);
+                me.setFaceLeft(false);
+            }
+			// 小鱼移动和清除游出边界的鱼
+			fishes.removeIf(f -> f instanceof SmallFish && ((SmallFish)f).isOutOfScreen(getWidth()));
+			for (Fish f : fishes) {
+				if (f instanceof SmallFish) {
+					((SmallFish) f).move();
+				}
 			}
-			if (rightPressed) {
-				me.setX(me.getX() + speed);
-				me.setFaceLeft(false);
+			// 每20帧生成一条小鱼
+			spawnCounter.getAndIncrement();
+			if (spawnCounter.get() >= 20) {
+				spawnCounter.set(0);
+				fishes.add(new SmallFish(getWidth(), getHeight()));
 			}
+
 			repaint();
-		});
+        });
 		timer.start();
 	}
 

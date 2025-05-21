@@ -22,7 +22,7 @@ public class Main
 			);
 			frame.setIconImage(icon);
 
-			frame.setSize(800, 600);
+			frame.setSize(800, 800);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 			// 添加游戏面板

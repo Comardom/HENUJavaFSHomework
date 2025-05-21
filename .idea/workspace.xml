@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7f6ba22-04dd-4466-a98e-2551f04f9f93" name="更改" comment="能显示出来自己的鱼了">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/SmallFish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Me.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Me.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gamemain/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain/GamePanel.java" afterDir="false" />
@@ -40,7 +40,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Comardom/HENUJavaFSHomework.git&quot;,
-    &quot;accountId&quot;: &quot;74f7e024-d5be-4cf0-a85b-de6b5c116a0b&quot;
+    &quot;accountId&quot;: &quot;a0a37c6b-d0be-4c33-9a42-3bcc76829cfb&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -55,31 +55,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Java 草稿.SimplePanel.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/comardom/下载/zh-6.5.0.12.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Java 草稿.FocusTestGamePanel.executor": "Run",
+    "Java 草稿.SimplePanel.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/comardom/IdeaProjects/HENUJavaFSHomework",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.Main.executor": "Run"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/新建临时文件&quot;: [
-      &quot;JAVA&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/新建临时文件": [
+      "JAVA"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="应用程序.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gamemain.Main" />
@@ -95,6 +96,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FocusTestGamePanel" type="Java Scratch" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FocusTestGamePanel" />
+      <option name="SCRATCH_FILE_URL" value="file://$APPLICATION_CONFIG_DIR$/scratches/FocusTestGamePanel.java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SimplePanel" type="Java Scratch" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SimplePanel" />
       <option name="SCRATCH_FILE_URL" value="file://$APPLICATION_CONFIG_DIR$/scratches/SimplePanel.java" />
@@ -103,12 +111,14 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Java 草稿.FocusTestGamePanel" />
       <item itemvalue="Java 草稿.SimplePanel" />
       <item itemvalue="应用程序.Main" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.Main" />
+        <item itemvalue="Java 草稿.FocusTestGamePanel" />
         <item itemvalue="Java 草稿.SimplePanel" />
       </list>
     </recent_temporary>
@@ -138,6 +148,9 @@
       <workItem from="1747621916171" duration="609000" />
       <workItem from="1747663387550" duration="1876000" />
       <workItem from="1747665858603" duration="2999000" />
+      <workItem from="1747810382776" duration="499000" />
+      <workItem from="1747811267354" duration="1112000" />
+      <workItem from="1747812827517" duration="3767000" />
     </task>
     <task id="LOCAL-00001" summary="能显示出来自己的鱼了">
       <option name="closed" value="true" />

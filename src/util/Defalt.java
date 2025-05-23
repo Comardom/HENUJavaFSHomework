@@ -7,6 +7,7 @@ public class Defalt
     private static final int DEFAULT_X = 500; // px
     private static final int DEFAULT_Y = 300; // px
     private static final int ME_SIDE_LENGTH = 64;
+    private static final int SMALL_SIDE_LENGTH = 32;
 
     public static int getWindowWidth()
     {
@@ -31,5 +32,9 @@ public class Defalt
     public static int getMeSideLength()
     {
         return ME_SIDE_LENGTH;
+    }
+    public static int getSmallSideLength()
+    {
+        return SMALL_SIDE_LENGTH;
     }
 }

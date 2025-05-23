@@ -1,24 +1,22 @@
 package entity;
 
+import util.Defalt;
 import util.ImageLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.Random;
+
 
 public class SmallFish extends Fish
 {
-    private static final int ME_SIDE_LENGTH = 32;
     private static final BufferedImage fishImage = ImageLoader.loadImage("/img/SmallFish.png");
-    private static final Random rand = new Random();
-    private static final int SCREEN_WIDTH = 800;
 
     public SmallFish(int panelWidth, int panelHeight)
     {
         super(
-                Math.random() < 0.5 ? -ME_SIDE_LENGTH : panelWidth,
-                (int)(Math.random() * (panelHeight - ME_SIDE_LENGTH)),
-                ME_SIDE_LENGTH, ME_SIDE_LENGTH,
+                Math.random() < 0.5 ? -Defalt.getSmallSideLength() : panelWidth,
+                (int)(Math.random() * (panelHeight - Defalt.getSmallSideLength())),
+                Defalt.getSmallSideLength(), Defalt.getSmallSideLength(),
                 Math.random() < 0.5,  // 是否朝左
                 true                  // 可被吃
         );

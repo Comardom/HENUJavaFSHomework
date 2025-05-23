@@ -20,25 +20,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class GamePanel extends JPanel implements KeyListener {
 	//	private BufferedImage backgroundImage;
-	private List<Fish> fishes = new ArrayList<>();
-	private Me me;
+	private final List<Fish> fishes = new ArrayList<>();
+	private final Me me;
 	private SmallFish smallFish;
 	private boolean upPressed, downPressed, leftPressed, rightPressed;
 	private BufferedImage backgroundCache;
-	private FishSpawner fishSpawner;
+	private final FishSpawner fishSpawner;
 
 	public GamePanel() {
 		me = new Me(Defalt.getWindowWidth(), Defalt.getWindowHeight()); // 先写死
 		fishSpawner = new FishSpawner(fishes, Defalt.getWindowWidth(), Defalt.getWindowHeight());
-
-		for (int i = 0; i < 10000; i++) {
-			me.setX(me.getX() + 1);
-			me.setX(me.getX() - 1);
-		}
-		for (int i = 0; i < 10000; i++) {
-			me.setY(me.getY() + 1);
-			me.setY(me.getY() - 1);
-		}
 
 
 		setFocusable(true);        // 允许获取焦点

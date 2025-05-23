@@ -3,7 +3,7 @@ package gamemain;
 import entity.Fish;
 import entity.Me;
 import entity.SmallFish;
-import util.Defalt;
+import util.Default;
 import util.FishSpawner;
 
 
@@ -25,8 +25,8 @@ public class GamePanel extends JPanel implements KeyListener {
 	private final FishSpawner fishSpawner;
 
 	public GamePanel() {
-		me = new Me(Defalt.getWindowWidth(), Defalt.getWindowHeight()); // 先写死
-		fishSpawner = new FishSpawner(fishes, Defalt.getWindowWidth(), Defalt.getWindowHeight());
+		me = new Me(Default.getWindowWidth(), Default.getWindowHeight()); // 先写死
+		fishSpawner = new FishSpawner(fishes, Default.getWindowWidth(), Default.getWindowHeight());
 
 
 		setFocusable(true);        // 允许获取焦点
@@ -38,8 +38,8 @@ public class GamePanel extends JPanel implements KeyListener {
 
 //		createBackgroundCache();
 
-		me.setX(Defalt.getDefaultX());
-		me.setY(Defalt.getDefaultY());
+		me.setX(Default.getDefaultX());
+		me.setY(Default.getDefaultY());
 
 //		loadBackgroundIMG("/img/sea.jpg");
 		fishes.add(me);
@@ -49,11 +49,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
 	}
 
-	//ImageLoader在util里面
-//	public void loadBackgroundIMG(String path)
-//	{
-//		backgroundImage = ImageLoader.loadImage(path);
-//	}
+
 	private void createBackgroundCache() {
 		if (getWidth() <= 0 || getHeight() <= 0) {
 			return;
@@ -90,15 +86,19 @@ public class GamePanel extends JPanel implements KeyListener {
 
 		g.drawImage(backgroundCache, 0, 0, null);
 
+//		Graphics2D g2 = backgroundCache.createGraphics();
+
 
 		// 绘制所有鱼
 		for (Fish f : fishes) {
 			f.draw(g);
 		}
 		// 显示分数
-		g.setColor(Color.BLACK);
-		g.setFont(new Font("Mono", Font.BOLD, 24));
-		g.drawString("Score: " + me.getScore(), 20, 30);
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		g2d.setFont(Default.getMyFont());
+		g2d.setColor(Color.BLACK);
+		g2d.drawString("Score: " + me.getScore(), 30, 50);
 
 		//解决诡异的可变刷新频率导致卡顿问题
 		Toolkit.getDefaultToolkit().sync();
@@ -167,7 +167,7 @@ public class GamePanel extends JPanel implements KeyListener {
 			for (Fish f : fishes) {
 				if (f instanceof SmallFish && me.canEat(f)) {
 					toRemove.add(f);
-					me.addScore(1); // 你可以自己定义加几分
+					me.addScore(1); // 定义加几分
 				}
 			}
 			fishes.removeAll(toRemove);

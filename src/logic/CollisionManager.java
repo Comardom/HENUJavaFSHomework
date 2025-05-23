@@ -6,10 +6,6 @@ import java.awt.*;
 
 public class CollisionManager
 {
-//	public static boolean isColliding(Fish a, Fish b)
-//	{
-//		return a.getBounds().intersects(b.getBounds());
-//	}
 	public static boolean canEat(Fish me, Fish other)
 	{
 		Rectangle myBounds = me.getBounds();

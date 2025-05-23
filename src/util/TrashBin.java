@@ -3,7 +3,15 @@ package util;
 
 public class TrashBin
 {
+    public static void _$()
+    {
 
+    }
+    //如果需要引入背景图片
+//	public void loadBackgroundIMG(String path)
+//	{
+//		backgroundImage = ImageLoader.loadImage(path);
+//	}
     //以下这俩废弃*****************************
     //专门处理Timer
 //    void controlTimer1() {

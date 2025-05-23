@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7f6ba22-04dd-4466-a98e-2551f04f9f93" name="更改" comment="修改了一些常量的读取，解耦了一些函数">
+    <list default="true" id="f7f6ba22-04dd-4466-a98e-2551f04f9f93" name="更改" comment="暂时消除了警告">
+      <change afterPath="$PROJECT_DIR$/src/util/FontLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Me.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Me.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/SmallFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/SmallFish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gamemain/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Defalt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Defalt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamemain/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/CollisionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/Defalt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Default.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/TrashBin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/TrashBin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +48,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="安全分析" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -153,7 +158,7 @@
       <workItem from="1747812827517" duration="3830000" />
       <workItem from="1747846257890" duration="440000" />
       <workItem from="1747871591202" duration="6972000" />
-      <workItem from="1747992212600" duration="3708000" />
+      <workItem from="1747992212600" duration="7829000" />
     </task>
     <task id="LOCAL-00001" summary="能显示出来自己的鱼了">
       <option name="closed" value="true" />
@@ -179,7 +184,31 @@
       <option name="project" value="LOCAL" />
       <updated>1747996259742</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="暂时消除了警告">
+      <option name="closed" value="true" />
+      <created>1748002013272</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748002013272</updated>
+    </task>
+    <task id="LOCAL-00005" summary="暂时消除了警告">
+      <option name="closed" value="true" />
+      <created>1748002126076</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748002126076</updated>
+    </task>
+    <task id="LOCAL-00006" summary="暂时消除了警告">
+      <option name="closed" value="true" />
+      <created>1748002139821</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748002139821</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +229,7 @@
     <MESSAGE value="能显示出来自己的鱼了" />
     <MESSAGE value="基本鱼的游动" />
     <MESSAGE value="修改了一些常量的读取，解耦了一些函数" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改了一些常量的读取，解耦了一些函数" />
+    <MESSAGE value="暂时消除了警告" />
+    <option name="LAST_COMMIT_MESSAGE" value="暂时消除了警告" />
   </component>
 </project>

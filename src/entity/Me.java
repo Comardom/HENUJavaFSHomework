@@ -1,7 +1,7 @@
 package entity;
 
 import logic.CollisionManager;
-import util.Defalt;
+import util.Default;
 import util.ImageLoader;
 
 import java.awt.*;
@@ -19,7 +19,7 @@ public class Me extends Fish
 	public Me()
 	{
 
-		super(500,300, Defalt.getMeSideLength(),Defalt.getMeSideLength(), true,false);
+		super(500,300, Default.getMeSideLength(), Default.getMeSideLength(), true,false);
 //		fishImage = ImageLoader.loadImage("/img/Me.png");
 		this.speed=0;
 
@@ -32,7 +32,7 @@ public class Me extends Fish
 	public Me(int panelWidth, int panelHeight)
 	{
 
-		super(500,300,Defalt.getMeSideLength(),Defalt.getMeSideLength(), true,false);
+		super(500,300, Default.getMeSideLength(), Default.getMeSideLength(), true,false);
 //		fishImage = ImageLoader.loadImage("/img/Me.png");
 		System.out.println("Me created with panel size: " + panelWidth + " x " + panelHeight);
 
@@ -57,9 +57,6 @@ public class Me extends Fish
 	{
 		Graphics2D g2 = (Graphics2D) g;
 
-		// 测试用纯色矩形，排除图片问题
-//		g2.setColor(Color.BLUE);
-//		g2.fillRect(x, y, width, height);
 
 
 		if (fishImage != null)
@@ -81,14 +78,6 @@ public class Me extends Fish
 		}
 	}
 
-//	public void setX(int x)
-//	{
-//		this.x = x;
-//	}
-//	public void setY(int y)
-//	{
-//		this.y = y;
-//	}
 	public void setX(int x)
 	{
 		if (x < 0) x = 0;

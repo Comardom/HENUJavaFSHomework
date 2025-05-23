@@ -1,6 +1,6 @@
 package entity;
 
-import util.Defalt;
+import util.Default;
 import util.ImageLoader;
 
 import java.awt.*;
@@ -14,13 +14,13 @@ public class SmallFish extends Fish
     public SmallFish(int panelWidth, int panelHeight)
     {
         super(
-                Math.random() < 0.5 ? -Defalt.getSmallSideLength() : panelWidth,
-                (int)(Math.random() * (panelHeight - Defalt.getSmallSideLength())),
-                Defalt.getSmallSideLength(), Defalt.getSmallSideLength(),
+                Math.random() < 0.5 ? -Default.getSmallSideLength() : panelWidth,
+                (int)(Math.random() * (panelHeight - Default.getSmallSideLength())),
+                Default.getSmallSideLength(), Default.getSmallSideLength(),
                 Math.random() < 0.5,  // 是否朝左
                 true                  // 可被吃
         );
-        this.speed = (int) (2 + Math.random() * 3); // 2~5的速度
+        this.speed = (int) (2 + Math.random() * 4); // 2~5的速度
     }
 
 
@@ -32,14 +32,7 @@ public class SmallFish extends Fish
     @Override
     public void move()
     {
-        if(isFaceLeft)
-        {
-            x -= speed;
-        }
-        else
-        {
-            x += speed;
-        }
+        x += isFaceLeft ? -speed : speed;
     }
 
     @Override

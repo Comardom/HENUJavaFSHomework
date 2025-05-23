@@ -49,7 +49,7 @@ public class Me extends Fish
 	@Override
 	public void move()
 	{
-		;
+
 	}
 
 	@Override

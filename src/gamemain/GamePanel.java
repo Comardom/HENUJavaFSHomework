@@ -9,8 +9,6 @@ import util.FishSpawner;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -22,7 +20,7 @@ public class GamePanel extends JPanel implements KeyListener {
 	//	private BufferedImage backgroundImage;
 	private final List<Fish> fishes = new ArrayList<>();
 	private final Me me;
-	private SmallFish smallFish;
+//	private SmallFish smallFish;
 	private boolean upPressed, downPressed, leftPressed, rightPressed;
 	private BufferedImage backgroundCache;
 	private final FishSpawner fishSpawner;
@@ -140,9 +138,9 @@ public class GamePanel extends JPanel implements KeyListener {
 		int delay = 1000 / fps;
 
 		// 每几帧生成一条新的鱼
-		AtomicInteger spawnCounter = new AtomicInteger();
+//		AtomicInteger spawnCounter = new AtomicInteger();
 
-		Timer timer = new Timer(delay, e -> {
+		Timer timer = new Timer(delay, _ -> {
 			int speed = 4;
 			if (upPressed) me.setY(me.getY() - speed);
 			if (downPressed) me.setY(me.getY() + speed);
@@ -162,7 +160,7 @@ public class GamePanel extends JPanel implements KeyListener {
 			fishes.removeIf(f -> f instanceof SmallFish && ((SmallFish) f).isOutOfScreen(getWidth()));
 			for (Fish f : fishes) {
 				if (f instanceof SmallFish) {
-					((SmallFish) f).move();
+					f.move();
 				}
 			}
 			//加分机制

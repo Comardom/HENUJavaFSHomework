@@ -14,7 +14,6 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class GamePanel extends JPanel implements KeyListener {
 	//	private BufferedImage backgroundImage;

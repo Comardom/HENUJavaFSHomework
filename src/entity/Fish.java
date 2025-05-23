@@ -25,6 +25,19 @@ public abstract class Fish
 
 	public abstract void draw(Graphics g);
 
+	public int getX()
+	{
+		return this.x;
+	}
+	public int getY()
+	{
+		return this.y;
+	}
+	public boolean getIsFaceLeft()
+	{
+		return  isFaceLeft;
+	}
+
 	//这个是碰撞箱
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, width, height);

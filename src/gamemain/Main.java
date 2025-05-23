@@ -1,5 +1,7 @@
 package gamemain;
 
+import util.Defalt;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -22,7 +24,7 @@ public class Main
 			);
 			frame.setIconImage(icon);
 
-			frame.setSize(800, 800);
+			frame.setSize(Defalt.getWindowWidth(), Defalt.getWindowHeight());
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 			// 添加游戏面板

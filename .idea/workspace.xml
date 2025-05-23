@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7f6ba22-04dd-4466-a98e-2551f04f9f93" name="更改" comment="能显示出来自己的鱼了">
-      <change afterPath="$PROJECT_DIR$/src/entity/SmallFish.java" afterDir="false" />
+    <list default="true" id="f7f6ba22-04dd-4466-a98e-2551f04f9f93" name="更改" comment="基本鱼的游动">
+      <change afterPath="$PROJECT_DIR$/src/util/Defalt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/FishSpawner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/TrashBin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Fish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Me.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Me.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/SmallFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/SmallFish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gamemain/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gamemain/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/CollisionManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,32 +60,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Java 草稿.FocusTestGamePanel.executor": "Run",
-    "Java 草稿.SimplePanel.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/comardom/IdeaProjects/HENUJavaFSHomework",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "项目",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true",
-    "应用程序.Main.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Java 草稿.FocusTestGamePanel.executor&quot;: &quot;Run&quot;,
+    &quot;Java 草稿.SimplePanel.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/comardom/IdeaProjects/HENU_java_homework&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/新建临时文件": [
-      "JAVA"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/新建临时文件&quot;: [
+      &quot;JAVA&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="应用程序.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gamemain.Main" />
@@ -150,7 +156,10 @@
       <workItem from="1747665858603" duration="2999000" />
       <workItem from="1747810382776" duration="499000" />
       <workItem from="1747811267354" duration="1112000" />
-      <workItem from="1747812827517" duration="3767000" />
+      <workItem from="1747812827517" duration="3830000" />
+      <workItem from="1747846257890" duration="440000" />
+      <workItem from="1747871591202" duration="6972000" />
+      <workItem from="1747992212600" duration="1812000" />
     </task>
     <task id="LOCAL-00001" summary="能显示出来自己的鱼了">
       <option name="closed" value="true" />
@@ -160,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747398947353</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="基本鱼的游动">
+      <option name="closed" value="true" />
+      <created>1747816644691</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747816644691</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +196,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="能显示出来自己的鱼了" />
-    <option name="LAST_COMMIT_MESSAGE" value="能显示出来自己的鱼了" />
+    <MESSAGE value="基本鱼的游动" />
+    <option name="LAST_COMMIT_MESSAGE" value="基本鱼的游动" />
   </component>
 </project>

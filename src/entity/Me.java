@@ -1,21 +1,25 @@
 package entity;
 
+import logic.CollisionManager;
+import util.Defalt;
 import util.ImageLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+
 public class Me extends Fish
 {
-	private static final int ME_SIDE_LENGTH = 64;
+
 	private static final BufferedImage fishImage = ImageLoader.loadImage("/img/Me.png");
 	private int panelWidth;
 	private int panelHeight;
+	private int score = 0;
 
 	public Me()
 	{
 
-		super(500,300, ME_SIDE_LENGTH,ME_SIDE_LENGTH, true,false);
+		super(500,300, Defalt.getMeSideLength(),Defalt.getMeSideLength(), true,false);
 //		fishImage = ImageLoader.loadImage("/img/Me.png");
 		this.speed=0;
 
@@ -28,7 +32,7 @@ public class Me extends Fish
 	public Me(int panelWidth, int panelHeight)
 	{
 
-		super(500,300, ME_SIDE_LENGTH,ME_SIDE_LENGTH, true,false);
+		super(500,300,Defalt.getMeSideLength(),Defalt.getMeSideLength(), true,false);
 //		fishImage = ImageLoader.loadImage("/img/Me.png");
 		System.out.println("Me created with panel size: " + panelWidth + " x " + panelHeight);
 
@@ -101,12 +105,12 @@ public class Me extends Fish
 
 	public int getX()
 	{
-		return this.x;
-	}
+        return super.getX();
+    }
 	public int getY()
 	{
-		return this.y;
-	}
+        return super.getY();
+    }
 	public void setFaceLeft(boolean faceLeft)
 	{
 		this.isFaceLeft = faceLeft;
@@ -116,6 +120,19 @@ public class Me extends Fish
 	public Rectangle getBounds()
 	{
 		return super.getBounds();
+	}
+	public boolean canEat(Fish other)
+	{
+        return CollisionManager.canEat(this, other);
+    }
+
+	public void addScore(int addition)
+	{
+		this.score += addition;
+	}
+
+	public int getScore() {
+		return score;
 	}
 
 }

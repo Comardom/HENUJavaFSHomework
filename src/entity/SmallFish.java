@@ -9,7 +9,7 @@ import java.util.Random;
 public class SmallFish extends Fish
 {
     private static final int ME_SIDE_LENGTH = 32;
-    private static final BufferedImage fishImage = ImageLoader.loadImage("/img/Me.png");
+    private static final BufferedImage fishImage = ImageLoader.loadImage("/img/SmallFish.png");
     private static final Random rand = new Random();
     private static final int SCREEN_WIDTH = 800;
 
@@ -22,7 +22,7 @@ public class SmallFish extends Fish
                 Math.random() < 0.5,  // 是否朝左
                 true                  // 可被吃
         );
-        this.speed = (int) (2 + Math.random() * 2); // 2~4的速度
+        this.speed = (int) (2 + Math.random() * 3); // 2~5的速度
     }
 
 

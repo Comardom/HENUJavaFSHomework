@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7f6ba22-04dd-4466-a98e-2551f04f9f93" name="更改" comment="暂时消除了警告">
-      <change afterPath="$PROJECT_DIR$/src/util/FontLoader.java" afterDir="false" />
+    <list default="true" id="f7f6ba22-04dd-4466-a98e-2551f04f9f93" name="更改" comment="使用新字体">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/svgSalamander_1_1_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/Boss.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/external/SvgUseExpander.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/MoreFish.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/Cheat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/SvgLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HENUJavaFSHomework.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HENUJavaFSHomework.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Me.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Me.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/SmallFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/SmallFish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gamemain/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gamemain/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/CollisionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Defalt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Default.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/Default.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Default.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/FishSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/FishSpawner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/TrashBin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/TrashBin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,22 +70,25 @@
   &quot;keyToString&quot;: {
     &quot;Java 草稿.FocusTestGamePanel.executor&quot;: &quot;Run&quot;,
     &quot;Java 草稿.SimplePanel.executor&quot;: &quot;Run&quot;,
+    &quot;Java 草稿.SvgLoaderTest.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/comardom/IdeaProjects/HENU_java_homework&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/comardom/下載/zh-6.5.0.12.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;
+    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.SvgUseExpander.executor&quot;: &quot;Run&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;com.intellij.ide.scratch.ScratchImplUtil$2/新建临时文件&quot;: [
@@ -101,6 +111,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SvgUseExpander" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="external.SvgUseExpander" />
+      <module name="HENUJavaFSHomework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="external.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FocusTestGamePanel" type="Java Scratch" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="FocusTestGamePanel" />
       <option name="SCRATCH_FILE_URL" value="file://$APPLICATION_CONFIG_DIR$/scratches/FocusTestGamePanel.java" />
@@ -115,14 +138,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SvgLoaderTest" type="Java Scratch" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.SvgLoaderTest" />
+      <option name="SCRATCH_FILE_URL" value="file://$APPLICATION_CONFIG_DIR$/scratches/SvgLoaderTest.java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue="Java 草稿.SvgLoaderTest" />
       <item itemvalue="Java 草稿.FocusTestGamePanel" />
       <item itemvalue="Java 草稿.SimplePanel" />
+      <item itemvalue="应用程序.SvgUseExpander" />
       <item itemvalue="应用程序.Main" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.Main" />
+        <item itemvalue="应用程序.SvgUseExpander" />
+        <item itemvalue="Java 草稿.SvgLoaderTest" />
         <item itemvalue="Java 草稿.FocusTestGamePanel" />
         <item itemvalue="Java 草稿.SimplePanel" />
       </list>
@@ -158,7 +198,11 @@
       <workItem from="1747812827517" duration="3830000" />
       <workItem from="1747846257890" duration="440000" />
       <workItem from="1747871591202" duration="6972000" />
-      <workItem from="1747992212600" duration="7829000" />
+      <workItem from="1747992212600" duration="13483000" />
+      <workItem from="1748051688367" duration="5626000" />
+      <workItem from="1748083851156" duration="1838000" />
+      <workItem from="1748131554085" duration="10197000" />
+      <workItem from="1748223904754" duration="1074000" />
     </task>
     <task id="LOCAL-00001" summary="能显示出来自己的鱼了">
       <option name="closed" value="true" />
@@ -208,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748002139821</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="使用新字体">
+      <option name="closed" value="true" />
+      <created>1748006131022</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748006131022</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +282,7 @@
     <MESSAGE value="基本鱼的游动" />
     <MESSAGE value="修改了一些常量的读取，解耦了一些函数" />
     <MESSAGE value="暂时消除了警告" />
-    <option name="LAST_COMMIT_MESSAGE" value="暂时消除了警告" />
+    <MESSAGE value="使用新字体" />
+    <option name="LAST_COMMIT_MESSAGE" value="使用新字体" />
   </component>
 </project>

@@ -19,8 +19,10 @@ public class Main
 		SwingUtilities.invokeLater(() -> {
 			JFrame frame = new JFrame("Game");
 
+			frame.requestFocusInWindow();    // 尝试请求焦点
+
 			//引入新字体
-			JLabel label = new JLabel("Hello with custom font");
+			JLabel label = new JLabel();
 			label.setFont(Default.getMyFont());
 
 			// 设置窗口图标（从资源中加载）

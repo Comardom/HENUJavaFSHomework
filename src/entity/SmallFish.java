@@ -1,16 +1,20 @@
 package entity;
 
+import com.kitfox.svg.SVGDiagram;
+import com.kitfox.svg.SVGException;
 import util.Default;
 import util.ImageLoader;
+import util.SvgLoader;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 
 public class SmallFish extends Fish
 {
-    private static final BufferedImage fishImage = ImageLoader.loadImage("/img/SmallFish.png");
-
+//    private static final BufferedImage fishImage = ImageLoader.loadImage("/img/SmallFish.png");
+    private static final SVGDiagram fishSvg = SvgLoader.loadSvg("/img/SmallFish.svg");
     public SmallFish(int panelWidth, int panelHeight)
     {
         super(
@@ -35,21 +39,42 @@ public class SmallFish extends Fish
         x += isFaceLeft ? -speed : speed;
     }
 
+
     @Override
     public void draw(Graphics g)
     {
         Graphics2D g2 = (Graphics2D) g;
-        if (fishImage != null)
+
+        if (fishSvg != null)
         {
-            if (isFaceLeft)
+            AffineTransform oldTx = g2.getTransform();
+
+            // 缩放因子
+            double scaleX = (double) width / fishSvg.getWidth();
+            double scaleY = (double) height / fishSvg.getHeight();
+
+            g2.translate(x, y);
+            if (!isFaceLeft)
             {
-                g2.drawImage(fishImage, x, y, width, height, null);
+                // 水平翻转
+                g2.scale(-scaleX, scaleY);
+                g2.translate(-fishSvg.getWidth(), 0);
             }
             else
             {
-                // 水平翻转
-                g2.drawImage(fishImage, x + width, y, -width, height, null);
+                g2.scale(scaleX, scaleY);
             }
+
+            try
+            {
+                fishSvg.render(g2);
+            }
+            catch (SVGException e)
+            {
+                throw new RuntimeException("Failed to render SVG for SmallFish", e);
+            }
+
+            g2.setTransform(oldTx);
         }
         else
         {
@@ -57,5 +82,4 @@ public class SmallFish extends Fish
             g2.fillRect(x, y, width, height);
         }
     }
-
 }

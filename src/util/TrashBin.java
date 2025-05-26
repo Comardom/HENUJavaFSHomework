@@ -1,6 +1,8 @@
 package util;
 
 
+import java.awt.*;
+
 public class TrashBin
 {
     public static void _$()
@@ -84,4 +86,76 @@ public class TrashBin
 //    }
 
     //以上这俩废弃*****************************
+//    @Override
+//    public void draw(Graphics g)
+//    {
+//        Graphics2D g2 = (Graphics2D) g;
+//
+//
+//
+//        if (fishSvg != null)
+//        {
+//            if (isFaceLeft)
+//            {
+//                g2.drawImage(fishImage, x, y, width, height, null);
+//            }
+//            else
+//            {
+//                // 水平翻转
+//                g2.drawImage(fishImage, x + width, y, -width, height, null);
+//            }
+//        }
+//        else
+//        {
+//            g2.setColor(Color.BLUE);
+//            g2.fillRect(x, y, width, height);
+//        }
+//    }
+//    @Override
+//    public void draw(Graphics g)
+//    {
+//        Graphics2D g2 = (Graphics2D) g;
+//
+//
+//
+//        if (fishImage != null)
+//        {
+//            if (nowFaceLeft)
+//            {
+//                g2.drawImage(fishImage, x, y, width, height, null);
+//            }
+//            else
+//            {
+//                // 水平翻转
+//                g2.drawImage(fishImage, x + width, y, -width, height, null);
+//            }
+//        }
+//        else
+//        {
+//            g2.setColor(Color.BLUE);
+//            g2.fillRect(x, y, width, height);
+//        }
+//    }
+//    @Override
+//    public void draw(Graphics g)
+//    {
+//        Graphics2D g2 = (Graphics2D) g;
+//        if (fishImage != null)
+//        {
+//            if (isFaceLeft)
+//            {
+//                g2.drawImage(fishImage, x, y, width, height, null);
+//            }
+//            else
+//            {
+//                // 水平翻转
+//                g2.drawImage(fishImage, x + width, y, -width, height, null);
+//            }
+//        }
+//        else
+//        {
+//            g2.setColor(Color.BLUE);
+//            g2.fillRect(x, y, width, height);
+//        }
+//    }
 }

@@ -46,8 +46,8 @@ public class Me extends Fish
 	public void updateSizeByScore()
 	{
 		int baseSize = Default.getMeSideLength();
-		int extra = score / 20; // 每20分长大一圈
-		int newSize = baseSize + extra * 8;
+		int extra = score / 5; // 每5分长大一圈
+		int newSize = baseSize + extra * 4;
 
 		// 如果尺寸变化才更新（避免每帧都重新赋值）
 		if (this.width != newSize || this.height != newSize)

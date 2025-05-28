@@ -4,23 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7f6ba22-04dd-4466-a98e-2551f04f9f93" name="更改" comment="使用新字体">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/svgSalamander_1_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Boss.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/external/SvgUseExpander.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/MoreFish.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/Cheat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/SvgLoader.java" afterDir="false" />
+    <list default="true" id="f7f6ba22-04dd-4466-a98e-2551f04f9f93" name="更改" comment="把目前所有的鱼都改成了矢量图，引入了svgSalamander 库">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HENUJavaFSHomework.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HENUJavaFSHomework.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Boss.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Me.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Me.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/SmallFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/SmallFish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gamemain/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gamemain/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Default.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Default.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/FishSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/FishSpawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/TrashBin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/TrashBin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +190,8 @@
       <workItem from="1748051688367" duration="5626000" />
       <workItem from="1748083851156" duration="1838000" />
       <workItem from="1748131554085" duration="10197000" />
-      <workItem from="1748223904754" duration="1074000" />
+      <workItem from="1748223904754" duration="1171000" />
+      <workItem from="1748414878259" duration="3483000" />
     </task>
     <task id="LOCAL-00001" summary="能显示出来自己的鱼了">
       <option name="closed" value="true" />
@@ -260,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748006131022</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="把目前所有的鱼都改成了矢量图，引入了svgSalamander 库">
+      <option name="closed" value="true" />
+      <created>1748225015511</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748225015511</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,6 +280,7 @@
     <MESSAGE value="修改了一些常量的读取，解耦了一些函数" />
     <MESSAGE value="暂时消除了警告" />
     <MESSAGE value="使用新字体" />
-    <option name="LAST_COMMIT_MESSAGE" value="使用新字体" />
+    <MESSAGE value="把目前所有的鱼都改成了矢量图，引入了svgSalamander 库" />
+    <option name="LAST_COMMIT_MESSAGE" value="把目前所有的鱼都改成了矢量图，引入了svgSalamander 库" />
   </component>
 </project>

@@ -1,5 +1,6 @@
 package gamemain;
 
+import entity.Boss;
 import entity.Fish;
 import entity.Me;
 import entity.SmallFish;
@@ -23,7 +24,10 @@ public class GamePanel extends JPanel implements KeyListener
 	private BufferedImage backgroundCache;
 	private final FishSpawner fishSpawner;
 	private boolean paused = false;
+	private boolean over = false;
 	private Timer timer; // 把 timer 提升为成员变量，方便控制启动和停止
+	private int lastBossRefreshScore = 0;//控制Boss方向用的
+
 
 
 	public GamePanel()
@@ -171,6 +175,24 @@ public class GamePanel extends JPanel implements KeyListener
 					fishSpawner.reset();
 				}
 			}
+			case KeyEvent.VK_R -> {
+				if(over)
+				{
+					over = false;
+					fishSpawner.reset();
+					me.setScore(0);
+					me.updateSizeByScore();
+					List<Fish> toRemove = new ArrayList<>();
+					for (Fish f : fishes)
+					{
+						if (f instanceof SmallFish || f instanceof Boss)
+						{
+							toRemove.add(f);
+						}
+					}
+					fishes.removeAll(toRemove);
+				}
+			}
 		}
 	}
 
@@ -193,18 +215,28 @@ public class GamePanel extends JPanel implements KeyListener
 		int delay = 1000 / fps;
 
 		timer = new Timer(delay, _ -> {
-			if (paused) return;
+			if (paused || over) return;
 
 			updatePlayerMovement();
 			spawnAndMoveFish();
 			checkEatAndScore();
 			me.updateSizeByScore();
-
+			updateBossDirection();
 
 			repaint();
 		});
 		timer.start();
 	}
+	private void updateBossDirection()
+	{
+		int score = me.getScore();
+		if (score >= 20 && score % 10 == 0 && score != lastBossRefreshScore)
+		{
+			Boss.refreshRandom();
+			lastBossRefreshScore = score;
+		}
+	}
+
 	private void updatePlayerMovement()
 	{
 		int speed = 4;
@@ -246,6 +278,15 @@ public class GamePanel extends JPanel implements KeyListener
 			{
 				toRemove.add(f);
 				me.addScore(1); // 定义加几分
+			}
+			if (f instanceof Boss && ((Boss) f).canEat(me) && me.getScore()>=80)
+			{
+				toRemove.add(f);
+				me.addScore(4);
+			}
+			if (f instanceof Boss && ((Boss) f).canEat(me) && me.getScore()<80)
+			{
+				over = true;
 			}
 		}
 		fishes.removeAll(toRemove);

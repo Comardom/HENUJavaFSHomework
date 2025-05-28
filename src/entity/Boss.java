@@ -2,6 +2,7 @@ package entity;
 
 import com.kitfox.svg.SVGDiagram;
 import com.kitfox.svg.SVGException;
+import logic.CollisionManager;
 import util.Default;
 import util.SvgLoader;
 
@@ -12,11 +13,9 @@ public class Boss extends Fish
 {
 //    private static final BufferedImage fishImage = ImageLoader.loadImage("/img/Boss.png");
     private static final SVGDiagram bossSvg = SvgLoader.loadSvg("/img/Boss.svg");
-    private static boolean nowFaceLeft = Math.random() < 0.5;
+    private static boolean nowFaceLeft;
     public Boss(int panelWidth, int panelHeight)
     {
-
-
         super(
                 nowFaceLeft ? panelWidth : -Default.getBossSideLength(),  // 从相反方向进场
                 (int)(Math.random() * (panelHeight - Default.getBossSideLength())),
@@ -77,5 +76,12 @@ public class Boss extends Fish
             g2.fillRect(x, y, width, height);
         }
     }
-
+    public boolean canEat(Fish other)
+    {
+        return CollisionManager.canEat(this, other);
+    }
+    public static void refreshRandom()
+    {
+        nowFaceLeft = Math.random() < 0.5;
+    }
 }

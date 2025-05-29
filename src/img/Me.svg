@@ -1,7 +1,7 @@
 <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64" height="64">
 	<title>Me</title>
 	<style>
-		.s0 { fill: #000000 } 
+	.s0 { fill: #000000 }
 	</style>
 	<path id="Background" fill-rule="evenodd" class="s0" d="m3 0v32h-3v-32z"/>
 	<path id="形状 1" fill-rule="evenodd" class="s0" d="m20 0v3h-20v-3z"/>

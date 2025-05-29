@@ -10,6 +10,8 @@ public class Default
     private static final int DEFAULT_Y = 200; // px
     private static final int ME_SIDE_LENGTH = 64;
     private static final int SMALL_SIDE_LENGTH = 32;
+    private static final int MEDIUM_SIDE_LENGTH = 48;
+    private static final int LARGE_SIDE_LENGTH = 48;
     private static final int BOSS_SIDE_LENGTH = 128;
     private static final Font MY_FONT = FontLoader.loadFont("/fonts/臺灣新細明體.ttf", 30f);
     private static final boolean devMode = true;
@@ -37,6 +39,14 @@ public class Default
     public static int getSmallSideLength()
     {
         return SMALL_SIDE_LENGTH;
+    }
+    public static int getMediumSideLength()
+    {
+        return MEDIUM_SIDE_LENGTH;
+    }
+    public static int getLargeSideLength()
+    {
+        return LARGE_SIDE_LENGTH;
     }
     public static int getBossSideLength()
     {

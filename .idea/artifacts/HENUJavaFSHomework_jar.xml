@@ -1,8 +1,9 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="HENUJavaFSHomework:jar">
+  <artifact type="jar" name="HENUJavaFSHomework:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/HENUJavaFSHomework_jar</output-path>
     <root id="archive" name="HENUJavaFSHomework.jar">
       <element id="module-output" name="HENUJavaFSHomework" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/external/svgSalamander-1.1.4.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

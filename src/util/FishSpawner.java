@@ -1,14 +1,12 @@
 package util;
 
-import entity.Boss;
-import entity.Fish;
-import entity.SmallFish;
+import entity.*;
 
 import java.util.List;
 
 public class FishSpawner
 {
-    private int counter = 0;
+//    private int counter = 0;
     private final List<Fish> fishes;
     private final int width, height;
 
@@ -23,58 +21,52 @@ public class FishSpawner
         this.height = height;
     }
 
-    public void update()
-    {
-        counter++;
-        if (counter >= 20)
-        {
-            counter = 0;
-            fishes.add(new SmallFish(width, height));
-        }
-    }
+    private int smallFishCounter = 0;
+    private int mediumFishCounter = 0;
+    private int largeFishCounter = 0;
+
     public void update(int playerScore)
     {
-        counter++;
+        smallFishCounter++;
+        mediumFishCounter++;
+        largeFishCounter++;
 
-        if (playerScore >= nextBossScoreThreshold)
-        {
-            fishes.add(new Boss(Default.getWindowWidth(),Default.getWindowHeight()));
-            nextBossScoreThreshold += 10;
-            // Optional: 显示提示，比如设置 showBossWarning = true;
-        }
-
-
-        if (bossWarning)
+        if (bossWarning)//开摆
         {
             warningCounter++;
-            // 提示倒计时，比如60帧（1秒）
             if (warningCounter >= 60)
             {
                 fishes.add(new Boss(width, height));
                 bossWarning = false;
                 warningCounter = 0;
-                nextBossScoreThreshold += 10;  // 阈值递增10分
+                nextBossScoreThreshold += 10;
             }
+        }
+        else if (playerScore >= nextBossScoreThreshold)
+        {
+            bossWarning = true;
+            warningCounter = 0;
         }
         else
         {
-            // 判断是否达到生成Boss的条件
-            if (playerScore >= nextBossScoreThreshold)
+            if (smallFishCounter >= 20)
             {
-                bossWarning = true;
-                warningCounter = 0;
+                smallFishCounter = 0;
+                fishes.add(new SmallFish(width, height));
             }
-            else
+            if (mediumFishCounter >= 150)
             {
-                // 继续生成小鱼
-                if (counter >= 20)
-                {
-                    counter = 0;
-                    fishes.add(new SmallFish(width, height));
-                }
+                mediumFishCounter = 0;
+                fishes.add(new MediumFish(width, height));
+            }
+            if (largeFishCounter >= 300)
+            {
+                largeFishCounter = 0;
+                fishes.add(new LargeFish(width, height));
             }
         }
     }
+
     public boolean isBossWarning()
     {
         return bossWarning;
@@ -89,7 +81,7 @@ public class FishSpawner
     {
         bossWarning = false;
         warningCounter = 0;
-        counter = 0;
+//        counter = 0;
         nextBossScoreThreshold = 20;  // 重置到初始值
     }
 

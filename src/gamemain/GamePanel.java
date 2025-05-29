@@ -1,9 +1,6 @@
 package gamemain;
 
-import entity.Boss;
-import entity.Fish;
-import entity.Me;
-import entity.SmallFish;
+import entity.*;
 import util.Default;
 import util.FishSpawner;
 
@@ -123,7 +120,7 @@ public class GamePanel extends JPanel implements KeyListener
 		if (fishSpawner.isBossWarning())
 		{
 			int secondsLeft = 3 - fishSpawner.getWarningCounter() / 20; // 3秒倒计时
-			g.drawString("Boss 即将出现：" + secondsLeft + " 秒", 50, 50);
+			g.drawString("Boss 即将出现：" + secondsLeft + " 秒", (getWidth()+Default.getBossSideLength())/2, getHeight()-Default.getSmallSideLength());
 		}
 
 
@@ -260,7 +257,8 @@ public class GamePanel extends JPanel implements KeyListener
 
 		// 移除游出屏幕的小鱼
 		fishes.removeIf(f -> f instanceof SmallFish && ((SmallFish) f).isOutOfScreen(getWidth()));
-
+		fishes.removeIf(f -> f instanceof MediumFish && ((MediumFish) f).isOutOfScreen(getWidth()));
+		fishes.removeIf(f -> f instanceof LargeFish && ((LargeFish) f).isOutOfScreen(getWidth()));
 		// 所有鱼都要 move（Boss 也要动）
 		for (Fish f : fishes)
 		{
@@ -278,6 +276,16 @@ public class GamePanel extends JPanel implements KeyListener
 			{
 				toRemove.add(f);
 				me.addScore(1); // 定义加几分
+			}
+			if (f instanceof MediumFish && me.canEat(f))
+			{
+				toRemove.add(f);
+				me.addScore(2); // 定义加几分
+			}
+			if (f instanceof LargeFish && me.canEat(f) && me.getScore()>=5)
+			{
+				toRemove.add(f);
+				me.addScore(3); // 定义加几分
 			}
 			if (f instanceof Boss && ((Boss) f).canEat(me) && me.getScore()>=80)
 			{

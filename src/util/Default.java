@@ -11,18 +11,31 @@ public class Default
     private static final int ME_SIDE_LENGTH = 64;
     private static final int SMALL_SIDE_LENGTH = 32;
     private static final int MEDIUM_SIDE_LENGTH = 48;
-    private static final int LARGE_SIDE_LENGTH = 48;
+    private static final int LARGE_SIDE_LENGTH = 64;
     private static final int BOSS_SIDE_LENGTH = 128;
     private static final Font MY_FONT = FontLoader.loadFont("/fonts/臺灣新細明體.ttf", 30f);
-    private static final boolean devMode = true;
+    private static boolean devMode = false;
+    private static int windowWidth;
+    private static int windowHeight;
+
+
+    public static void setWindowSize(int w, int h) {
+        windowWidth = w;
+        windowHeight = h;
+    }
+
 
     public static int getWindowWidth()
     {
-        return WINDOW_WIDTH;
+        return windowWidth == 0 ? WINDOW_WIDTH : windowWidth;
     }
     public static int getWindowHeight()
     {
-        return WINDOW_HEIGHT;
+        return windowHeight == 0 ? WINDOW_HEIGHT : windowHeight;
+    }
+    public static void setDevMode()
+    {
+        devMode=true;
     }
     public static int getDefaultX()
     {

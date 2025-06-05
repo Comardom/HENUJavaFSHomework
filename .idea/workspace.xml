@@ -9,17 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7f6ba22-04dd-4466-a98e-2551f04f9f93" name="更改" comment="SmallFish和Boss的基本逻辑设计完毕">
-      <change afterPath="$PROJECT_DIR$/src/entity/LargeFish.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/MediumFish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/HENUJavaFSHomework_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/HENUJavaFSHomework_jar.xml" afterDir="false" />
+    <list default="true" id="f7f6ba22-04dd-4466-a98e-2551f04f9f93" name="更改" comment="基本完成">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gamemain/MenuPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/GameState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/EffectPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/MusicPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Me.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Me.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gamemain/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/Me.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/Me.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/MoreFish.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Cheat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamemain/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/Default.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Default.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/FishSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/FishSpawner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/TrashBin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/TrashBin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +30,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -68,36 +70,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Java 草稿.FocusTestGamePanel.executor&quot;: &quot;Run&quot;,
-    &quot;Java 草稿.SimplePanel.executor&quot;: &quot;Run&quot;,
-    &quot;Java 草稿.SvgLoaderTest.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/comardom/IdeaProjects/HENU_java_homework&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.language.and.region&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.SvgUseExpander.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Java 草稿.FocusTestGamePanel.executor": "Run",
+    "Java 草稿.SimplePanel.executor": "Run",
+    "Java 草稿.SvgLoaderTest.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/comardom/IdeaProjects/HENU_java_homework",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "工件",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.language.and.region",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.Main.executor": "Run",
+    "应用程序.SvgUseExpander.executor": "Run"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/新建临时文件&quot;: [
-      &quot;JAVA&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/新建临时文件": [
+      "JAVA"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="应用程序.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gamemain.Main" />
@@ -207,7 +209,12 @@
       <workItem from="1748421135174" duration="32000" />
       <workItem from="1748421178707" duration="691000" />
       <workItem from="1748478298396" duration="802000" />
-      <workItem from="1748480079482" duration="4208000" />
+      <workItem from="1748480079482" duration="4464000" />
+      <workItem from="1748525995050" duration="2498000" />
+      <workItem from="1748947041600" duration="91000" />
+      <workItem from="1748951542957" duration="4569000" />
+      <workItem from="1749044141625" duration="12388000" />
+      <workItem from="1749092851192" duration="12714000" />
     </task>
     <task id="LOCAL-00001" summary="能显示出来自己的鱼了">
       <option name="closed" value="true" />
@@ -281,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748418389103</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="基本完成">
+      <option name="closed" value="true" />
+      <created>1748491652601</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1748491652601</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +321,8 @@
     <MESSAGE value="使用新字体" />
     <MESSAGE value="把目前所有的鱼都改成了矢量图，引入了svgSalamander 库" />
     <MESSAGE value="SmallFish和Boss的基本逻辑设计完毕" />
-    <option name="LAST_COMMIT_MESSAGE" value="SmallFish和Boss的基本逻辑设计完毕" />
+    <MESSAGE value="基本完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="基本完成" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

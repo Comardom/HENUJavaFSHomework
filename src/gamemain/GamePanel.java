@@ -1,8 +1,11 @@
 package gamemain;
 
 import entity.*;
+import logic.GameState;
 import util.Default;
+import util.EffectPlayer;
 import util.FishSpawner;
+import util.MusicPlayer;
 
 
 import javax.swing.*;
@@ -12,6 +15,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class GamePanel extends JPanel implements KeyListener
 {
@@ -20,36 +24,48 @@ public class GamePanel extends JPanel implements KeyListener
 	private boolean upPressed, downPressed, leftPressed, rightPressed;
 	private BufferedImage backgroundCache;
 	private final FishSpawner fishSpawner;
-	private boolean paused = false;
-	private boolean over = false;
 	private Timer timer; // 把 timer 提升为成员变量，方便控制启动和停止
 	private int lastBossRefreshScore = 0;//控制Boss方向用的
+	private static GameState gameState = GameState.MENU;
+	private boolean devModeActivated = false;
+	private MusicPlayer player = new MusicPlayer("/audio/葉ノ舞.b.wav");
+	private Thread musicThread = new Thread(player);
+	private boolean bossAlarmPlayed = false;
+	private boolean winSoundPlayed = false;
 
-
+	public static void setGameState(GameState gameState)
+	{
+		GamePanel.gameState = gameState;
+	}
 
 	public GamePanel()
 	{
-		me = new Me(Default.getWindowWidth(), Default.getWindowHeight()); // 先写死
+//		new Thread(new MusicPlayer("/audio/葉ノ舞.b.wav")).start();
+
+		musicThread.start();
+		preloadEffects();
+		me = new Me(Default.getWindowWidth(), Default.getWindowHeight());
 		fishSpawner = new FishSpawner(fishes, Default.getWindowWidth(), Default.getWindowHeight());
-
-
 		setFocusable(true);        // 允许获取焦点
-
 		setDoubleBuffered(true);
 		addKeyListener(this);      // 注册键盘监听器
 		// 延迟请求焦点，确保窗口激活后才请求
 		SwingUtilities.invokeLater(this::requestFocusInWindow);
-
 		me.setX(Default.getDefaultX());
 		me.setY(Default.getDefaultY());
-
 		fishes.add(me);
 
 		controlTimer();
-
 	}
 
-
+	private void preloadEffects()
+	{
+		EffectPlayer.preload("/audio/converted_cameraShutter.wav");
+		EffectPlayer.preload("/audio/converted_softBubble.wav");
+		EffectPlayer.preload("/audio/converted_smallBell.wav");
+		EffectPlayer.preload("/audio/converted_alarm.wav");
+		EffectPlayer.preload("/audio/converted_short.wav");
+	}
 	private void createBackgroundCache() {
 		if (getWidth() <= 0 || getHeight() <= 0)
 		{
@@ -106,8 +122,10 @@ public class GamePanel extends JPanel implements KeyListener
 
 
 		// 显示暂停提示
-		if (paused)
+		if (gameState == GameState.PAUSED)
 		{
+//			player.pause();
+			Font originalFont = g2d.getFont(); // 保存原字体
 			g2d.setFont(Default.getMyFont().deriveFont(82f));
 			g2d.setColor(new Color(100, 70, 140)); // Medium Orchid
 			String msg = "遊戲暫停";
@@ -115,14 +133,39 @@ public class GamePanel extends JPanel implements KeyListener
 			int msgWidth = fm.stringWidth(msg);
 			int msgHeight = fm.getHeight();
 			g2d.drawString(msg, (getWidth() - msgWidth) / 2, (getHeight() + msgHeight) / 2);
+
+			g2d.setFont(originalFont); // 恢复字体
 		}
+
 
 		if (fishSpawner.isBossWarning())
 		{
+			if (!bossAlarmPlayed)
+			{
+				EffectPlayer.play("/audio/converted_alarm.wav");
+				bossAlarmPlayed = true;
+			}
 			int secondsLeft = 3 - fishSpawner.getWarningCounter() / 20; // 3秒倒计时
 			g.drawString("Boss 即将出现：" + secondsLeft + " 秒", (getWidth()+Default.getBossSideLength())/2, getHeight()-Default.getSmallSideLength());
 		}
+		if(!fishSpawner.isBossWarning())
+		{
+			bossAlarmPlayed = false; // 下一次触发警告时允许播放
+		}
 
+		if(me.getScore()>100)
+		{
+			if (!winSoundPlayed)
+			{
+				EffectPlayer.play("/audio/converted_smallBell.wav");
+				winSoundPlayed = true;
+			}
+			g.drawString("Win! 你可以继续玩下去，祝你好运。", (getWidth())/4-20, (getHeight())/2+100);
+		}
+		if(me.getScore()<=100)
+		{
+			winSoundPlayed = false;
+		}
 
 		//解决诡异的可变刷新频率导致卡顿问题
 		Toolkit.getDefaultToolkit().sync();
@@ -134,7 +177,16 @@ public class GamePanel extends JPanel implements KeyListener
 	{
 		if (e.getKeyCode() == KeyEvent.VK_SPACE)
 		{
-			paused = !paused;
+			if (gameState == GameState.RUNNING)
+			{
+				player.pause();
+				gameState = GameState.PAUSED;
+			}
+			else if (gameState == GameState.PAUSED)
+			{
+				player.resume();
+				gameState = GameState.RUNNING;
+			}
 			repaint(); // 确保立刻重绘
 			return;
 		}
@@ -156,7 +208,23 @@ public class GamePanel extends JPanel implements KeyListener
 			case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_NUMPAD2, 225 -> downPressed = false;
 			case KeyEvent.VK_LEFT, KeyEvent.VK_A, KeyEvent.VK_NUMPAD4, 226 -> leftPressed = false;
 			case KeyEvent.VK_RIGHT, KeyEvent.VK_D, KeyEvent.VK_NUMPAD6, 227 -> rightPressed = false;
-			case KeyEvent.VK_C -> {
+			case KeyEvent.VK_SLASH -> {
+				if (!Default.isDevMode() && !devModeActivated)
+				{
+					Default.setDevMode();
+					devModeActivated = true;
+					EffectPlayer.play("/audio/converted_cameraShutter.wav");
+				}
+			}
+			case KeyEvent.VK_OPEN_BRACKET -> {
+				if (Default.isDevMode())
+				{
+					me.addScore(-10);
+					me.updateSizeByScore();
+					System.out.println("Cheat activated! Score: " + me.getScore());
+				}
+			}
+			case KeyEvent.VK_CLOSE_BRACKET -> {
 				if (Default.isDevMode())
 				{
 					me.addScore(10);
@@ -173,16 +241,17 @@ public class GamePanel extends JPanel implements KeyListener
 				}
 			}
 			case KeyEvent.VK_R -> {
-				if(over)
+				if(gameState == GameState.GAME_OVER)
 				{
-					over = false;
+					player.resume();
+					gameState = GameState.RUNNING;
 					fishSpawner.reset();
 					me.setScore(0);
 					me.updateSizeByScore();
 					List<Fish> toRemove = new ArrayList<>();
 					for (Fish f : fishes)
 					{
-						if (f instanceof SmallFish || f instanceof Boss)
+						if (f != null && f != me)
 						{
 							toRemove.add(f);
 						}
@@ -200,29 +269,34 @@ public class GamePanel extends JPanel implements KeyListener
 		// 不用处理
 	}
 
-	private void togglePause()
-	{
-		paused = !paused;
-	}
-
 
 	private void controlTimer()
 	{
-		int fps = 60;
+		int fps = 90;
 		int delay = 1000 / fps;
-
+		AtomicInteger i = new AtomicInteger();
 		timer = new Timer(delay, _ -> {
-			if (paused || over) return;
-
-			updatePlayerMovement();
-			spawnAndMoveFish();
-			checkEatAndScore();
-			me.updateSizeByScore();
-			updateBossDirection();
-
-			repaint();
+			if (gameState == GameState.RUNNING)
+			{
+				i.getAndIncrement();
+				updatePlayerMovement();
+				spawnAndMoveFish();
+				checkEatAndScore();
+				me.updateSizeByScore();
+				updateBossDirection();
+				minus(i.get());
+			}
+			repaint(); // 保证无论暂停与否都能显示暂停提示
 		});
 		timer.start();
+	}
+
+	private void minus(int i)
+	{
+		if(i%150==0 && i!=0)
+		{
+			me.setScore(me.getScore() - 1);
+		}
 	}
 	private void updateBossDirection()
 	{
@@ -272,29 +346,41 @@ public class GamePanel extends JPanel implements KeyListener
 		List<Fish> toRemove = new ArrayList<>();
 		for (Fish f : fishes)
 		{
-			if (f instanceof SmallFish && me.canEat(f))
+			if (f instanceof SmallFish && me.canEat(f) && me.getScore()>=-20)
 			{
 				toRemove.add(f);
+				EffectPlayer.play("/audio/converted_softBubble.wav");
 				me.addScore(1); // 定义加几分
 			}
-			if (f instanceof MediumFish && me.canEat(f))
+			if (f instanceof MediumFish && me.canEat(f) && me.getScore()>=-10)
 			{
 				toRemove.add(f);
+				EffectPlayer.play("/audio/converted_softBubble.wav");
 				me.addScore(2); // 定义加几分
 			}
 			if (f instanceof LargeFish && me.canEat(f) && me.getScore()>=5)
 			{
 				toRemove.add(f);
+				EffectPlayer.play("/audio/converted_softBubble.wav");
 				me.addScore(3); // 定义加几分
 			}
 			if (f instanceof Boss && ((Boss) f).canEat(me) && me.getScore()>=80)
 			{
 				toRemove.add(f);
+				EffectPlayer.play("/audio/converted_softBubble.wav");
 				me.addScore(4);
 			}
 			if (f instanceof Boss && ((Boss) f).canEat(me) && me.getScore()<80)
 			{
-				over = true;
+				player.pause();
+				EffectPlayer.play("/audio/converted_short.wav");
+				gameState = GameState.GAME_OVER;
+			}
+			if (me.getScore()<-20)
+			{
+				player.pause();
+				EffectPlayer.play("/audio/converted_short.wav");
+				gameState = GameState.GAME_OVER;
 			}
 		}
 		fishes.removeAll(toRemove);

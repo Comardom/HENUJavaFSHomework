@@ -1,5 +1,6 @@
 package gamemain;
 
+
 import util.Default;
 import util.TrashBin;
 
@@ -30,16 +31,39 @@ public class Main
 					Main.class.getResource("/img/Me.png")
 			);
 			frame.setIconImage(icon);
+//			frame.setResizable(false);
 
 			frame.setSize(Default.getWindowWidth(), Default.getWindowHeight());
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-			// 添加游戏面板
-			frame.add(new GamePanel());
-
-			frame.setLocationRelativeTo(null); // 居中显示
+			JPanel container = getContainer(frame);
+			frame.add(container);
+			frame.pack(); // 自动适应
+			frame.setLocationRelativeTo(null);
 			frame.setVisible(true);
 		});
 		TrashBin._$();
+	}
+
+	private static JPanel getContainer(JFrame frame)
+	{
+		CardLayout layout = new CardLayout();
+		JPanel container = new JPanel(layout);
+		MenuPanel menu = new MenuPanel((width, height) -> {
+			// 设置 Default 中的宽高（动态更新）
+			Default.setWindowSize(width, height);
+
+			// 创建游戏面板
+			GamePanel gamePanel = new GamePanel();
+			container.add(gamePanel, "game");
+			layout.show(container, "game");
+
+			// 设置窗口大小
+			frame.setSize(width, height);
+			frame.setLocationRelativeTo(null);
+			gamePanel.requestFocusInWindow();
+		});
+		container.add(menu, "menu");
+		return container;
 	}
 }

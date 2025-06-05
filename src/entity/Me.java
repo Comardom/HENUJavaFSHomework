@@ -73,6 +73,10 @@ public class Me extends Fish
 
 		if (fishSvg != null)
 		{
+			if (g2.getClip() == null) {
+				g2.setClip(0, 0, panelWidth, panelHeight); // 添加这一行，防止 NullPointerException
+			}
+
 			g2.translate(x, y); // 平移到当前位置
 
 			if (!isFaceLeft)

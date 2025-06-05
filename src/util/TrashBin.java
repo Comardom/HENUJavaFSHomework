@@ -2,6 +2,10 @@ package util;
 
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.LinkedList;
+import java.util.List;
 
 public class TrashBin
 {
@@ -9,6 +13,42 @@ public class TrashBin
     {
 
     }
+//    package util;
+//
+//import java.awt.event.KeyAdapter;
+//import java.awt.event.KeyEvent;
+//import java.util.LinkedList;
+//import java.util.List;
+//
+//    public class KeyManager extends KeyAdapter
+//    {
+//        private final LinkedList<Integer> recentKeys = new LinkedList<>();
+//        private final int maxLength;
+//
+//        public KeyManager(int maxLength) {
+//            this.maxLength = maxLength;
+//        }
+//
+//        @Override
+//        public void keyPressed(KeyEvent e) {
+//            if (recentKeys.size() >= maxLength) {
+//                recentKeys.removeFirst();
+//            }
+//            recentKeys.add(e.getKeyCode());
+//        }
+//
+//        public boolean matchesSequence(List<Integer> sequence) {
+//            if (recentKeys.size() < sequence.size()) return false;
+//            for (int i = 0; i < sequence.size(); i++) {
+//                if (!recentKeys.get(recentKeys.size() - sequence.size() + i).equals(sequence.get(i))) {
+//                    return false;
+//                }
+//            }
+//            return true;
+//        }
+//    }
+
+
     //如果需要引入背景图片
 //	public void loadBackgroundIMG(String path)
 //	{
